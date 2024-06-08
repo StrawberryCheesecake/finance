@@ -1,0 +1,35 @@
+If we want to make daily trades where we can make gains on a daily basis what should we focus on:
+
+What is our strategy to trade on a stock to turn a profit that day reliably
+    How do we predict the low and the high and as such when to sell?
+        Do we want to focus on the high low? Should we bring the scale down to more local
+
+Best way to build this forward is to build out a simulator so we can easily test ideas
+    How? What are we simulating what are the inputs?
+        Should it be a set of buy here sell here on x? with pseudo code? 
+        Functions that are given a current value then return a command to buy/sell based on current data? -> This seems like it. We build everything else around that so that we can plug and play a buy/sell solution/idea
+
+What market do we want to look at or attack? 
+    Decisions Decisions? What do we know what is the best approach
+    Lets delay this for now given we want to move with the strategy idea so the function should also feed the stock it is watching?
+
+
+So lets start with that, do we want to pull fresh data anytime?
+    Note: Using the Public API (without authentication), you are limited to 2,000 requests per hour per IP (or up to a total of 48,000 requests a day).
+    Worth downloading locally? depends on the market strategy
+
+
+Implementation requirements:
+    Given: Stock, Day, Buy/Sell Strategy Function
+    Outputs: Simulated performance of strategy, the stock data 
+
+    How will we feed strategy though if it requires historic data? or do we care about historic data? I guess this can be built into the strategy function as a whole need to modularize here
+    Using this we can iterate through strategies and test across different markets. 
+    As such we want to limit each simulation as a single call to the api to land within limits of usage incase we want to end up simulating across multiple markets
+    Next iteration of this implementation should take stock, and strategy to simulate over entire time period. Leverage existing code but practice good code practice here
+
+
+
+Idea 1: Look at stable stocks that consistently rise
+        How can we use their daily movement and the knowledge they are known for stability
+
