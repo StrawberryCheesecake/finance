@@ -52,3 +52,11 @@ What is a good stock
     
 
 
+#big TODO
+Collect enough of what we consider ideal day trading data, run strategy on training data get results
+Use results with ML to train on data to identify what days would lead to best results with strategy
+
+
+Need to build out strategy modularly so can easily add and remove ideas to it
+
+Need to build out simulation so that multiple can be run at once and shown efficiently to compare data
