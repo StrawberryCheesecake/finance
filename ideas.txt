@@ -33,3 +33,22 @@ Implementation requirements:
 Idea 1: Look at stable stocks that consistently rise
         How can we use their daily movement and the knowledge they are known for stability
 
+
+What is a good stock
+    High volatility/liquidity/movement
+        Stocks that are up down > 4% on a given day
+    Something with large potential moments incoming
+        Earnings reports
+        News announcements
+            FDA Approval
+            Negative News
+                Acquisitions/Buy outs
+                Mergers
+    Price range of 1-20$? Lower price bigger percentage moves most likely
+        Bellcurve
+        1-5 low 
+        5-10 peak
+        10-20 low
+    
+
+
