@@ -35,6 +35,7 @@ def candleStickMaker(graphData, save):
             'style': "yahoo",
             'volume': True,
             'figratio': (16, 6),
+            #'figscale': 2,
             'returnfig': True,
             'show_nontrading': False
         }

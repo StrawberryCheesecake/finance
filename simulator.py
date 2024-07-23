@@ -1,15 +1,12 @@
 import yfinance as yf
-from datetime import datetime as dt
-from datetime import timedelta
-import grapher
-
+import global_helpers.dates as dt
+#import grapher
+import global_helpers.dataHelper as dh
 #stock screener website https://finviz.com/
 #maybe use this to start filtering and downloading ticker data?
 
 def simulate_strategy_day(symbol, day, strategy):
-    if dt.strptime(day, '%Y-%m-%d') < (dt.today() - timedelta(days=7)):
-        print ("Error: the day you selected is more than 7 days ago")
-        return 
+    
     #first lets get the data for the day for the symbol
     df = yf.download(symbol, start=day, period="1d", interval="1m")
 
@@ -32,9 +29,17 @@ def simulate_strategy_day(symbol, day, strategy):
     #once we have all our actions we cumulate them into a triggers dataframe to add to graph data and pass
 
     graphData = {symbol: [df,day,triggers], symbol2: [df2,day]}
-    save = True
+    save = False
     grapher.candleStickMaker(graphData, save)
 
     return
 
-simulate_strategy_day("META", dt.today().strftime('%Y-%m-%d'), "s")
+
+
+
+#today = dt.getDateXDaysAgo(5)
+#if (today is not None):
+#    simulate_strategy_day("META", today, "s")
+
+test = dh.load_data('META',dt.getDateXDaysAgo(5),'1m','5d')
+print(test)

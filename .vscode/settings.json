@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./globalhelpers",
+        "./global_helpers",
+        "./src/portfolios"
+    ]
+}
