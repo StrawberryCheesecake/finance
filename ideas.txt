@@ -60,3 +60,6 @@ Use results with ML to train on data to identify what days would lead to best re
 Need to build out strategy modularly so can easily add and remove ideas to it
 
 Need to build out simulation so that multiple can be run at once and shown efficiently to compare data
+
+
+https://www.reddit.com/r/algotrading/comments/13uqy9t/where_to_get_1_min_us_stock_data_for_10_years/
