@@ -1,13 +1,14 @@
 import sys
-sys.path.insert(0, 'global_helpers')
+sys.path.insert(0, 'src')
 
 from tradingview_screener import Query, Column as col
-import dataHelper as datahelp
-import dates as dt
+from global_helpers import dataHelper as datahelp
+from global_helpers import dayHelper as dt
 import os
 import time
 
-
+#TODO: Update this to save ticker portfolios instead
+#also build a scanner class/file that we can leverage
 def gatherDataOnDay(today):
     if (today is None):
         print("No date provided return")
@@ -76,4 +77,4 @@ def gatherDataOnDay(today):
 
 
 for i in range(0,7):
-    gatherDataOnDay(dt.getDateXDaysAgo(i))
+    gatherDataOnDay(dt.getDateXDaysFrom(i))

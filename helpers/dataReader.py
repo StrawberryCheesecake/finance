@@ -1,5 +1,5 @@
 import yfinance as yf
-import global_helpers.dates as dt
+import global_helpers.dayHelper as dt
 
 today = dt.getDateXDaysAgo(5)
 if (today is not None):
