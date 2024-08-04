@@ -1,0 +1,9 @@
+yfinance
+flask
+flask-core
+graphene
+flask-graphql
+datetime
+numpy
+mplfinance
+pandas
