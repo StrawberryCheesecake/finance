@@ -1,6 +1,6 @@
 yfinance
 flask
-flask-core
+flask-cors
 graphene
 flask-graphql
 datetime
