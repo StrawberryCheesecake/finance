@@ -2,7 +2,6 @@ yfinance
 flask
 flask-cors
 graphene
-flask-graphql
 datetime
 numpy
 mplfinance
