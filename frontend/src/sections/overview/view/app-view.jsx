@@ -15,7 +15,7 @@ export default function AppView() {
       </Typography>
 
         <Grid xs={12} md={6} lg={8}>
-          <TickerPortfolio symbol="APPL" date="today" principal={10000}/>
+          <TickerPortfolio symbol="AAPL" date="today" principal={10000}/>
         </Grid>
       </Grid>
     </Container>

@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from src.global_helpers import dayHelper as dt
+import os
 #import grapher
 
 def buyOrSellVol(data):
@@ -8,7 +9,24 @@ def buyOrSellVol(data):
         return 'buy'
     else:
         return 'sell'
-    
+
+def check_symbol_is_real(symbol: str) -> bool:
+      ticker = yf.Ticker(symbol)
+      info = None
+      try:
+            info = ticker.info
+            return True
+      except:
+            return False
+
+def check_tp_exists(symbol: str, date: str) -> bool:
+      """Check if a ticker profile of the same symbol and date exists"""
+      base_directory = './backend/data/'
+      file_path = os.path.join(base_directory, symbol, f"{date}.pkl")
+      if os.path.exists(file_path):
+            return True
+      return False
+
 def load_data(symbol: str, interval: str, start_date: str, end_date: str = None):
       """Gets the data for the passed symbol with a given interval, start date and end date
       \n If no end date is passed it will assume that you want the data just for the start date passed"""

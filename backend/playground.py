@@ -6,9 +6,9 @@ from src.simulator import simulation as sim
 portfolio = tp.tickerPortfolio(symbol="EGY", date="today", principal=10000.0)
 # portfolio.add_strategy(mid.basic_3xdropbuy_10percdropsell, 'mid')
 portfolio.load_daily_data()
-portfolio.save_to_file()
+result = portfolio.to_json()
 # sim.simulateTickerHistoric(portfolio)
-print(portfolio)
+print(result)
 
 # portfolio = tp.tickerPortfolio.load_from_file("AAPL", "2024-07-24")
 # # sim.simulateTickerHistoric(portfolio)

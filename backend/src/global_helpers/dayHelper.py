@@ -1,5 +1,8 @@
 from datetime import timedelta, datetime as dt
 
+def dateToString(date) -> str:
+    return  date.strftime('%Y-%m-%d %H:%M:%S')
+
 def getDateXDaysFrom(daysAgo: int, date: str = None) -> str:
     """Will get the date x days from the date string shared, if no date is passed it will assume today
     as such passing just '0' will  return today"""

@@ -5,7 +5,7 @@ from src.global_helpers import dayHelper as dates
 from src.global_helpers import dataHelper as dataHelp
 from typing import Literal 
 import pickle
-
+import json
 
 class tickerPortfolio:
     base_directory = './backend/data/'
@@ -38,6 +38,68 @@ class tickerPortfolio:
         else:
             self.historic_data = None
             self.previous_days_data = None
+
+    def to_dict(self) -> dict:
+        """Converts the portfolio to a JSON-serializable dictionary."""
+        temp_daily_data = []
+        for item in self.daily_data_cache:
+            temp_daily_data.append({
+                'x': dates.dateToString(item[0]),
+                'y': [
+                    int(item[1]['Open']*100)/100,
+                    int(item[1]['High']*100)/100,
+                    int(item[1]['Low']*100)/100,
+                    int(item[1]['Close']*100)/100,
+                    item[1]['Volume']]
+                })
+        
+        return {
+            "symbol": self.symbol,
+            "date": self.date,
+            "principal": self.principal,
+            "current_balance": self.current_balance,
+            "net_gain_loss": self.net_gain_loss,
+            "final_balance": self.final_balance,
+            "strategy_investment_tracker": self.strategy_investment_tracker,
+            "daily_data_cache": temp_daily_data,
+            "action_cache": self.action_cache,
+            "pre_market_strategies": [func.__name__ for func in self.pre_market_strategies],
+            "mid_market_strategies": [func.__name__ for func in self.mid_market_strategies],
+            "post_market_strategies": [func.__name__ for func in self.post_market_strategies],
+            #"historic_data": self.historic_data if self.historic_data is not None else None,
+            #"previous_days_data": self.previous_days_data if self.previous_days_data is not None else None,
+        }
+
+    @staticmethod
+    def from_dict(data: dict) -> 'tickerPortfolio':
+        """Creates a tickerPortfolio instance from a dictionary."""
+        portfolio = tickerPortfolio(
+            symbol=data["symbol"],
+            date=data["date"],
+            principal=data["principal"],
+        )
+        portfolio.current_balance = data["current_balance"]
+        portfolio.net_gain_loss = data["net_gain_loss"]
+        portfolio.final_balance = data["final_balance"]
+        portfolio.strategy_investment_tracker = data["strategy_investment_tracker"]
+        portfolio.daily_data_cache = [pd.DataFrame(cache) for cache in data["daily_data_cache"]]
+        portfolio.action_cache = data["action_cache"]
+        # Note: For strategies, you need to map back to the actual functions
+        portfolio.pre_market_strategies = []  # Fill with actual function references if needed
+        portfolio.mid_market_strategies = []  # Fill with actual function references if needed
+        portfolio.post_market_strategies = []  # Fill with actual function references if needed
+        portfolio.historic_data = pd.DataFrame(data["historic_data"]) if data["historic_data"] is not None else None
+        portfolio.previous_days_data = pd.DataFrame(data["previous_days_data"]) if data["previous_days_data"] is not None else None
+        return portfolio
+
+    def to_json(self) -> str:
+        """Converts the portfolio to a JSON string."""
+        return json.dumps(self.to_dict(), indent=4)
+
+    @staticmethod
+    def from_json(json_str: str) -> 'tickerPortfolio':
+        """Creates a tickerPortfolio instance from a JSON string."""
+        return tickerPortfolio.from_dict(json.loads(json_str))
 
     def __str__(self):
         return (
