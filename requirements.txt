@@ -1,9 +1,7 @@
-yfinance
-flask
-flask-cors
-graphene
-flask-graphql
-datetime
-numpy
-mplfinance
-pandas
+Flask==3.0.3
+Flask_Cors==4.0.1
+mplfinance==0.12.10b0
+numpy==2.0.1
+pandas==2.2.2
+tradingview_screener==2.5.0
+yfinance==0.2.41
