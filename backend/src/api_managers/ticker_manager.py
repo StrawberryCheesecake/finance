@@ -18,6 +18,7 @@ def get_ticker_portfolio():
         else:
             tickerPort = tp(symbol, date, principal)
             tickerPort.load_daily_data()
+            tickerPort.save_to_file()
     else:
         return "ERROR ERROR ERROR SYMBOL NOT REAL"
     
